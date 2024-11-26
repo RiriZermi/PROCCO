@@ -1,8 +1,8 @@
 
-module Memory_Adress_Register(
+module Memory_Adress_Register #(parameter MAR_register_size = 10)(
 input logic clk, reset,
 input logic MAR_read, //-to control
-output logic[9:0] MAR_register,
+output logic[MAR_register_size-1:0] MAR_register,
 inout tri[31:0] bus
     );
 

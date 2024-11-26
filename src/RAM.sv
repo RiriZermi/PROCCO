@@ -4,15 +4,15 @@ module RAM (
     input logic RAM_read,RAM_write,      //-to control                
     inout tri0[31:0] bus 
 );
+    //PARAM
+    parameter RAM_adress_size = 2**10;
 //set_param synth.elaboration.rodinMoreOptions "rt::set_parameter var_size_limit 4194304"
-    logic[31:0] mem[2**10];
+    logic[31:0] mem[RAM_adress_size];
 
     initial begin
 //        `include "../include/RAM.txt"
-        // Charger le fichier binaire dans la mémoire
-		
-		//error : complete your path
-        $readmemb("..../DATA_RAM/RAM.bin", mem);
+        // Put your path (absolute path to be sure)
+        $readmemb("......./DATA_RAM/RAM.bin", mem);
     end
     
 //    assign data_out = mem[addr];

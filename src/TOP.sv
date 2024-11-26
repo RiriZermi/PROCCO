@@ -29,6 +29,9 @@ output logic[6:0] SEG,
 output logic[7:0] AN,
 output logic LED
     );
+    //------PARAM--------
+    localparam MAR_register_size = 10;
+    localparam RAM_adress_size = 2 ** MAR_register_size;
     //signals
     
     logic reset;
@@ -119,14 +122,14 @@ output logic LED
      
      
      //---------------MEMORY ADRESS REGISTER---------------------------
-     Memory_Adress_Register MAR_i(.clk(clk),
+     Memory_Adress_Register #(.MAR_register_size(MAR_register_size))MAR_i(.clk(clk),
      .reset(reset),
      .MAR_read(MAR_read),//-to control
      .MAR_register(MAR_register),
      .bus(bus_nets));
      
      //---------------- RAM ( data + instruction) -------------------
-     RAM ram_i(
+     RAM #(.RAM_adress_size(RAM_adress_size))ram_i(
      .clk(clk),
      .addr(MAR_register),
      .RAM_read(RAM_read),//-to control

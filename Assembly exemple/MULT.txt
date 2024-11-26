@@ -1,3 +1,6 @@
+;CIN version : ask R3 R4 from user
+;LW version : load R3 R4 from memory (adress 20 & 21)
+;then do multiplication and print out on 7 segment display
 ORG 0x0   
 	START:
 CIN R3

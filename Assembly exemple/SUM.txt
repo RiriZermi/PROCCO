@@ -1,3 +1,4 @@
+;do the sum of the first N number
 J start(R0)
 data_memory:
 ORG 10

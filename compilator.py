@@ -176,7 +176,6 @@ def generate_binary(filename):
         binary_list=[]
         current_address = 0
         symbol_table = parse_labels(lines)
-        print(symbol_table)
         for line in lines:
        
             line = line.split(';')[0] #erase commentary
@@ -202,7 +201,7 @@ def generate_binary(filename):
                 binary_list.append(binary)
                 current_address += 1
     
-    with open("./include/RAM.bin",'w') as f:
+    with open("./DATA_RAM/RAM.bin",'w') as f:
         for binary in binary_list:
             f.write(binary)
             f.write('\n')
@@ -225,9 +224,9 @@ def main():
         with open(filename, 'r') as file:
             content = file.read()
     except FileNotFoundError:
-        print(f"Erreur : le fichier '{filename}' est introuvable.")
+        print(f"Error : don't find :'{filename}'.")
     except Exception as e:
-        print(f"Une erreur est survenue : {e}")
+        print(f"Error : {e}")
     
     generate_binary(filename)    
         
