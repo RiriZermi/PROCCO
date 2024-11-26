@@ -1,0 +1,19 @@
+J start(R0)
+data_memory:
+ORG 10
+
+;sum of N first number 
+start:
+
+LIU R15 100  ;Load N
+LIU R14 0  ;counter
+LIU R2 0 ; sum
+loop:
+
+ADDI R14 R14 1
+ADD R2 R2 R14
+
+
+JNE R14 R15 loop
+SW R2 data_memory(R0)
+HALT

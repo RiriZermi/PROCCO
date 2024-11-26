@@ -1,0 +1,32 @@
+J start(R0)
+result:
+
+ORG 1000
+
+
+save: ;Addr = 1000
+!1
+!1
+
+start:
+LIU R15 0  ;counter
+LIU R14 999 ; end condition
+
+loop:
+
+LW R2 1000(R0)
+LW R3 1001(R0)
+
+ADDI R15 R15 1
+
+ADD R4 R3 R2
+
+SW R2 1001(R0)
+SW R4 1000(R0)
+
+SW R4 result(R15)
+
+
+JNC loop ;stop when carry bit is on
+end:
+HALT
